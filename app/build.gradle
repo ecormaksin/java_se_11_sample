@@ -9,6 +9,13 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id "io.freefair.lombok" version "5.3.0"
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
 }
 
 repositories {
@@ -21,10 +28,16 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
 
     // Use JUnit Jupiter Engine for testing.
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testRuntimeOnly (
+        'org.junit.jupiter:junit-jupiter-engine',
+        "org.junit.platform:junit-platform-commons:${junitPlatformCommonsVersion}"
+    )
 
     // This dependency is used by the application.
-    implementation 'com.google.guava:guava:29.0-jre'
+    implementation (
+        'com.google.guava:guava:29.0-jre',
+        "javax.validation:validation-api:2.0.1.Final"
+    )
 }
 
 application {
