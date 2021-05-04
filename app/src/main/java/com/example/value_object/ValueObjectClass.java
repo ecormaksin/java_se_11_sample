@@ -1,4 +1,4 @@
-package com.example;
+package com.example.value_object;
 
 import javax.validation.constraints.Size;
 
